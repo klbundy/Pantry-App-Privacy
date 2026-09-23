@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy — Pantry AI</title>
+  <title>Privacy Policy — RIQUO</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -20,61 +20,103 @@
   </style>
 </head>
 <body>
-  <h1>Privacy Policy for Pantry AI</h1>
-  <p class="updated">Last updated: 08-26-2026</p>
+  <h1>Privacy Policy for RIQUO</h1>
+  <p class="updated">Last updated: 09-23-2026</p>
 
-  <h2>Information We Collect</h2>
   <p>
-    Account information (email address); pantry inventory data you add manually or via photo/receipt scanning;
-    recipes you generate, import, or save; cooking history you log; shopping list items; and dietary
-    preferences, restrictions, and allergies you provide.
+    RIQUO (formerly Pantry AI) is a pantry, recipe, and shopping list app. This policy explains what data the
+    app collects, how it is used, and who it is shared with.
   </p>
 
-  <h2>Camera &amp; Photo Access</h2>
+  <h2>Information We Collect</h2>
+  <ul>
+    <li><strong>Account information:</strong> your email address and password (passwords are handled by our
+      authentication provider and are never visible to us).</li>
+    <li><strong>Profile information (optional):</strong> a display name and profile photo, if you choose to add them.</li>
+    <li><strong>Pantry and household data:</strong> pantry items you add manually, by voice, or by photo/receipt
+      scanning, including quantities, prices, and expiration dates; shopping list items; and the shared pantries
+      you create or join.</li>
+    <li><strong>Recipes and cooking history:</strong> recipes you generate, import, or save, and meals you log.</li>
+    <li><strong>Food preferences:</strong> dietary preferences, restrictions, and allergies you choose to provide.</li>
+    <li><strong>Diagnostics:</strong> crash reports and app performance data, used to find and fix bugs.</li>
+  </ul>
+
+  <h2>Camera, Photos &amp; Microphone</h2>
   <p>
-    With your permission, the app accesses your camera and photo library to let you scan receipts, pantry
-    items, and recipe photos. These images are sent to OpenAI's API for processing (identifying items or
-    extracting recipe details) and are not stored by OpenAI beyond what's necessary to generate a response.
+    With your permission, the app uses your camera and photo library so you can scan receipts, pantry items,
+    and recipe photos, and so you can choose a profile photo. With your permission, the app uses your
+    microphone only while you hold the voice button to add pantry items by speaking them. The app never
+    accesses your camera, photos, or microphone in the background.
+  </p>
+
+  <h2>AI Features and OpenAI</h2>
+  <p>
+    RIQUO's AI features are powered by OpenAI. <strong>Before any of your data is sent to OpenAI, the app asks
+    for your permission.</strong> If you allow it, then when you use an AI feature the following is sent to
+    OpenAI's API, through our server, to process that request:
+  </p>
+  <ul>
+    <li>Receipt, pantry, and recipe photos you scan or import (to identify items or extract recipe details)</li>
+    <li>Voice recordings you make with the voice button (to transcribe them into pantry items)</li>
+    <li>Your pantry item names, food preferences, and allergies (to generate or modify recipes that fit them)</li>
+    <li>Recipe names or instructions you type (for recipe search and "Ask AI to modify")</li>
+  </ul>
+  <p>
+    Nothing is sent to OpenAI unless you use an AI feature. Our server passes these requests to OpenAI and
+    returns the result; it does not keep your photos or voice recordings. OpenAI processes this data under its
+    API data usage policies, which do not use API data to train its models by default and may retain it for a
+    limited time (up to 30 days) for abuse monitoring. If you choose not to allow AI processing, you can still
+    add and manage items manually.
   </p>
 
   <h2>How We Use Your Information</h2>
   <p>
-    To provide core app functionality — tracking your pantry, generating personalized recipe suggestions,
-    and managing your shopping list. Dietary restrictions and allergies you provide are used solely to
-    filter AI-generated recipe suggestions.
+    Only to provide the app's features: tracking your pantry, generating recipe suggestions, managing your
+    shopping list and meal history, syncing your data across your devices and with members of your shared
+    pantry, and fixing crashes and bugs. Allergies and dietary restrictions are used only to tailor recipe
+    suggestions.
   </p>
 
   <h2>Data Sharing</h2>
   <p>
-    If you join a shared pantry, other members of that pantry can see the pantry's items, recipes, and
-    shopping list. We do not sell your data or share it with third parties for advertising.
+    If you join a shared pantry, other members of that pantry can see its pantry items and shopping list.
+    We do not sell your data, and we do not share it with anyone for advertising or tracking.
   </p>
 
   <h2>Third-Party Services</h2>
-  <p>
-    We use Supabase for account authentication and data storage, and OpenAI's API for image recognition and
-    recipe generation. Both process data solely to provide app functionality.
-  </p>
+  <p>We use the following service providers, which process data only to run the app:</p>
+  <ul>
+    <li><strong>Supabase</strong> for account sign-in, data storage, and profile photo storage</li>
+    <li><strong>OpenAI</strong> for image recognition, voice transcription, and recipe generation (only after you allow it)</li>
+    <li><strong>Render</strong> to host the server that sends AI requests to OpenAI</li>
+    <li><strong>Sentry</strong> for crash reporting and performance monitoring</li>
+  </ul>
 
-  <h2>Account & Data Deletion</h2>
-<p>To delete your RIQUO account and associated personal data:</p>
-<ol>
-  <li>Open the RIQUO app and sign in</li>
-  <li>Go to Settings</li>
-  <li>Scroll to the bottom and tap "Delete Account"</li>
-  <li>Confirm the deletion when prompted</li>
-</ol>
-<p>If you no longer have the app installed, email
-<a href="mailto:keithbundy11@gmail.com">keithbundy11@gmail.com</a> with the
-subject line "Account Deletion Request" and the email address associated with
-your account. We will process your request within 30 days.</p>
-<p><strong>What gets deleted:</strong> your account credentials, personal
-preferences, saved recipes, and meal tracking history are permanently deleted
-immediately.</p>
-<p><strong>What may be retained:</strong> if you were a member of a shared
-household pantry, pantry items you added remain visible to other members of
-that pantry (ownership is removed, but shared inventory data is not deleted,
-since it belongs to the household, not just you).</p>
+  <h2>Account &amp; Data Deletion</h2>
+  <p>To delete your RIQUO account and associated personal data:</p>
+  <ol>
+    <li>Open the RIQUO app and sign in</li>
+    <li>Go to Settings</li>
+    <li>Scroll to the bottom and tap "Delete Account"</li>
+    <li>Confirm the deletion when prompted</li>
+  </ol>
+  <p>If you no longer have the app installed, email
+  <a href="mailto:keithbundy11@gmail.com">keithbundy11@gmail.com</a> with the
+  subject line "Account Deletion Request" and the email address associated with
+  your account. We will process your request within 30 days.</p>
+  <p><strong>What gets deleted:</strong> your account credentials, personal
+  preferences, saved recipes, and meal tracking history are permanently deleted
+  immediately.</p>
+  <p><strong>What may be retained:</strong> if you were a member of a shared
+  household pantry, pantry items you added remain visible to other members of
+  that pantry (ownership is removed, but shared inventory data is not deleted,
+  since it belongs to the household, not just you).</p>
+
+  <h2>Children</h2>
+  <p>RIQUO is not directed to children under 13, and we do not knowingly collect personal information from them.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>If this policy changes, we will update the date at the top of this page.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy can be sent to <a href="mailto:keithbundy11@gmail.com">keithbundy11@gmail.com</a>.</p>
