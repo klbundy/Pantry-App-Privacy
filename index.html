@@ -21,7 +21,7 @@
 </head>
 <body>
   <h1>Privacy Policy for RIQUO</h1>
-  <p class="updated">Last updated: 09-23-2026</p>
+  <p class="updated">Last updated: 10-03-2026</p>
 
   <p>
     RIQUO (formerly Pantry AI) is a pantry, recipe, and shopping list app. This policy explains what data the
@@ -31,13 +31,19 @@
   <h2>Information We Collect</h2>
   <ul>
     <li><strong>Account information:</strong> your email address and password (passwords are handled by our
-      authentication provider and are never visible to us).</li>
+      authentication provider and are never visible to us). If you use <strong>Sign in with Apple</strong>, Apple
+      shares your name (the first time you sign in, used as your display name) and an email address, which may be
+      a private relay address if you choose "Hide My Email". We never receive your Apple ID password.</li>
     <li><strong>Profile information (optional):</strong> a display name and profile photo, if you choose to add them.</li>
     <li><strong>Pantry and household data:</strong> pantry items you add manually, by voice, or by photo/receipt
       scanning, including quantities, prices, and expiration dates; shopping list items; and the shared pantries
       you create or join.</li>
     <li><strong>Recipes and cooking history:</strong> recipes you generate, import, or save, and meals you log.</li>
     <li><strong>Food preferences:</strong> dietary preferences, restrictions, and allergies you choose to provide.</li>
+    <li><strong>AI usage counts:</strong> how many times each week you use each AI feature, used to apply weekly
+      limits. We store the counts, not the content of your requests.</li>
+    <li><strong>Subscription status:</strong> if you subscribe to RIQUO Plus, whether your subscription is active
+      and when it renews or expires. Payments are handled by Apple or Google; we never see your payment details.</li>
     <li><strong>Diagnostics:</strong> crash reports and app performance data, used to find and fix bugs.</li>
   </ul>
 
@@ -66,7 +72,8 @@
     returns the result; it does not keep your photos or voice recordings. OpenAI processes this data under its
     API data usage policies, which do not use API data to train its models by default and may retain it for a
     limited time (up to 30 days) for abuse monitoring. If you choose not to allow AI processing, you can still
-    add and manage items manually.
+    add and manage items manually. You can turn AI processing off at any time in Settings &rarr; AI Processing;
+    the app will ask again before sending anything.
   </p>
 
   <h2>How We Use Your Information</h2>
@@ -86,9 +93,13 @@
   <h2>Third-Party Services</h2>
   <p>We use the following service providers, which process data only to run the app:</p>
   <ul>
-    <li><strong>Supabase</strong> for account sign-in, data storage, and profile photo storage</li>
+    <li><strong>Supabase</strong> for account sign-in, data storage, profile photo storage, and hosting the server
+      that sends AI requests to OpenAI</li>
+    <li><strong>Apple</strong> for Sign in with Apple, if you choose to use it</li>
     <li><strong>OpenAI</strong> for image recognition, voice transcription, and recipe generation (only after you allow it)</li>
-    <li><strong>Render</strong> to host the server that sends AI requests to OpenAI</li>
+    <li><strong>RevenueCat</strong> to manage RIQUO Plus subscriptions; it receives an anonymous account identifier
+      and your purchase and subscription status from Apple or Google, not your name, email, or payment details</li>
+    <li><strong>Render</strong> to host the server used by older versions of the app</li>
     <li><strong>Sentry</strong> for crash reporting and performance monitoring</li>
   </ul>
 
@@ -104,9 +115,14 @@
   <a href="mailto:keithbundy11@gmail.com">keithbundy11@gmail.com</a> with the
   subject line "Account Deletion Request" and the email address associated with
   your account. We will process your request within 30 days.</p>
-  <p><strong>What gets deleted:</strong> your account credentials, personal
-  preferences, saved recipes, and meal tracking history are permanently deleted
-  immediately.</p>
+  <p><strong>What gets deleted:</strong> your account credentials, profile
+  (display name and photo), personal preferences, saved recipes, and meal
+  tracking history, AI usage counts, and subscription status are permanently
+  deleted immediately. If you signed in with
+  Apple, RIQUO's access to your Apple ID is also revoked.</p>
+  <p><strong>Subscriptions:</strong> deleting your account does not cancel a
+  RIQUO Plus subscription. Cancel it in your Apple ID or Google Play
+  subscription settings.</p>
   <p><strong>What may be retained:</strong> if you were a member of a shared
   household pantry, pantry items you added remain visible to other members of
   that pantry (ownership is removed, but shared inventory data is not deleted,
