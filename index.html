@@ -21,7 +21,7 @@
 </head>
 <body>
   <h1>Privacy Policy for RIQUO</h1>
-  <p class="updated">Last updated: 10-07-2026</p>
+  <p class="updated">Last updated: 10-09-2026</p>
 
   <p>
     RIQUO (formerly Pantry AI) is a pantry, recipe, and shopping list app. This policy explains what data the
@@ -50,7 +50,8 @@
   <h2>Camera, Photos &amp; Microphone</h2>
   <p>
     With your permission, the app uses your camera and photo library so you can scan receipts, pantry items,
-    and recipe photos, and so you can choose a profile photo. With your permission, the app uses your
+    and recipe photos, so you can choose a profile photo, and so you can share a photo of a dish you cooked
+    (only when you choose to). With your permission, the app uses your
     microphone only while you hold the voice button to add pantry items by speaking them. The app never
     accesses your camera, photos, or microphone in the background.
   </p>
@@ -111,6 +112,15 @@
     account deletes all of your likes.
   </p>
   <p>
+    <strong>Cook photos ("I made this"):</strong> if you choose to share a photo of a recipe you made, the photo is
+    uploaded and added to that recipe in Popular recipes, where other signed-in users can see it. You choose whether
+    your first name and last initial (from your display name, for example "Keith B.") appear with it; otherwise it is
+    shown as "a RIQUO cook". Every photo passes an automatic content check (OpenAI's moderation service) and is
+    reviewed by us before anyone else can see it. Photos are stored on Cloudflare R2 at an unlisted web address.
+    Other users can report a photo or hide all photos from its author. Your email, pantry, and account details are
+    never shown with a photo. Deleting your account deletes your shared photos.
+  </p>
+  <p>
     We do not sell your data, and we do not share it with anyone for advertising or tracking.
   </p>
 
@@ -119,8 +129,10 @@
   <ul>
     <li><strong>Supabase</strong> for account sign-in, data storage, profile photo storage, and hosting the server
       that sends AI requests to OpenAI</li>
+    <li><strong>Cloudflare</strong> (R2 storage) to store and display recipe photos you choose to share</li>
     <li><strong>Apple</strong> for Sign in with Apple, if you choose to use it</li>
-    <li><strong>OpenAI</strong> for image recognition, voice transcription, and recipe generation (only after you allow it)</li>
+    <li><strong>OpenAI</strong> for image recognition, voice transcription, and recipe generation (only after you allow it),
+      and an automatic content check on recipe photos you choose to share</li>
     <li><strong>RevenueCat</strong> to manage RIQUO Plus subscriptions; it receives an anonymous account identifier
       and your purchase and subscription status from Apple or Google, not your name, email, or payment details</li>
     <li><strong>Render</strong> to host the server used by older versions of the app</li>
@@ -141,7 +153,7 @@
   your account. We will process your request within 30 days.</p>
   <p><strong>What gets deleted:</strong> your account credentials, profile
   (display name and photo), personal preferences, saved recipes, and meal
-  tracking history, recipe likes, AI usage counts, and subscription status are permanently
+  tracking history, recipe likes, shared recipe photos, AI usage counts, and subscription status are permanently
   deleted immediately. If you signed in with
   Apple, RIQUO's access to your Apple ID is also revoked.</p>
   <p><strong>Subscriptions:</strong> deleting your account does not cancel a
