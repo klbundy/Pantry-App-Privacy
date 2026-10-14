@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A recipe from RIQUO</title>
+<meta name="description" content="A recipe shared from RIQUO, the app that turns what's in your kitchen into real recipes.">
+<meta property="og:title" content="A recipe shared from RIQUO">
+<meta property="og:description" content="Open it to see the ingredients and steps. RIQUO turns what's in your kitchen into real recipes.">
+<meta property="og:type" content="article">
+<meta name="apple-itunes-app" content="app-id=6805291212">
+<style>
+  :root { --green: #3D8B37; --green-light: #E8F3E6; --bg: #F7F5F0; --card: #FFFFFF; --text: #1C1C1C; --muted: #6B6B6B; --border: #E6E2D8; --tip: #FFF7E6; --tip-border: #F5D9A8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 20px 16px 120px; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--green); text-decoration: none; margin-bottom: 18px; }
+  .brand span { font-size: 22px; }
+  h1 { font-size: 28px; line-height: 1.2; margin: 0 0 8px; }
+  .desc { color: var(--muted); margin: 0 0 14px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .stat { background: var(--card); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; font-size: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; margin-bottom: 18px; }
+  h2 { font-size: 18px; margin: 0 0 10px; }
+  ul, ol { margin: 0; padding-left: 22px; }
+  li { margin: 6px 0; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .tip { background: var(--tip); border: 1px solid var(--tip-border); border-radius: 14px; padding: 14px 16px; margin-bottom: 18px; }
+  .tip b { color: #92400E; display: block; margin-bottom: 2px; }
+  .cta { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--border); padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
+  .cta-inner { max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+  .cta p { margin: 0; flex: 1; font-size: 14px; color: var(--muted); }
+  .cta a { background: var(--green); color: #fff; text-decoration: none; font-weight: 600; padding: 10px 16px; border-radius: 12px; white-space: nowrap; }
+  .msg { text-align: center; color: var(--muted); padding: 60px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="https://apps.apple.com/app/id6805291212"><span>🫙</span> RIQUO</a>
+  <div id="recipe"><p class="msg">Loading recipe…</p></div>
+</div>
+<div class="cta">
+  <div class="cta-inner">
+    <p>Turn what's in your kitchen into recipes like this one. Free.</p>
+    <a id="get" href="https://apps.apple.com/app/id6805291212">Get RIQUO</a>
+  </div>
+</div>
+<script>
+  // Recipe shared from the app (supabase share_recipe / get_shared_recipe).
+  // The key below is Supabase's public "anon" key: it only allows what
+  // guests may do (row-level security + SECURITY DEFINER functions).
+  const SUPABASE_URL = 'https://hbcamqorxvmvalwsngxh.supabase.co';
+  const ANON_KEY = 'sb_publishable_T2XRoq9J23siZr1pR5OBrw_aZyFMiYw';
+  const PLAY_URL = 'https://play.google.com/store/apps/details?id=com.klbundy.pantryapp';
+
+  if (/android/i.test(navigator.userAgent)) document.getElementById('get').href = PLAY_URL;
+
+  const el = (tag, text, cls) => { const e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; };
+  const box = document.getElementById('recipe');
+  const fail = (msg) => { box.replaceChildren(el('p', msg, 'msg')); };
+
+  const id = new URLSearchParams(location.search).get('id');
+  if (!id || !/^[a-f0-9]{6,20}$/.test(id)) {
+    fail("This recipe link isn't complete. Ask whoever shared it to send it again.");
+  } else {
+    fetch(SUPABASE_URL + '/rest/v1/rpc/get_shared_recipe', {
+      method: 'POST',
+      headers: { apikey: ANON_KEY, Authorization: 'Bearer ' + ANON_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p_id: id }),
+    })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => (r ? render(r) : fail("We couldn't find this recipe. It may have been removed.")))
+      .catch(() => fail("Couldn't load the recipe. Check your connection and try again."));
+  }
+
+  function render(r) {
+    document.title = r.name + ' · RIQUO';
+    const out = [el('h1', r.name)];
+    if (r.description) out.push(el('p', r.description, 'desc'));
+
+    const stats = el('div', null, 'stats');
+    const total = (Number(r.prepTime) || 0) + (Number(r.cookTime) || 0);
+    if (total) stats.append(el('span', '⏱ ' + total + ' min', 'stat'));
+    if (r.servings) stats.append(el('span', '🍽 ' + r.servings + ' servings', 'stat'));
+    if (r.cookingMethod) stats.append(el('span', r.cookingMethod, 'stat'));
+    if (r.cuisine) stats.append(el('span', r.cuisine, 'stat'));
+    if (stats.children.length) out.push(stats);
+
+    const ing = el('div', null, 'card');
+    ing.append(el('h2', 'Ingredients'));
+    const ul = el('ul');
+    (r.ingredients || []).forEach((i) => ul.append(el('li', String(i))));
+    ing.append(ul);
+    out.push(ing);
+
+    if (r.tip) {
+      const tip = el('div', null, 'tip');
+      tip.append(el('b', '💡 Cooking tip'), el('span', r.tip));
+      out.push(tip);
+    }
+
+    const steps = Array.isArray(r.steps) && r.steps.length ? r.steps : (r.instructions || []).map((t) => ({ text: t }));
+    const st = el('div', null, 'card');
+    st.append(el('h2', 'Steps'));
+    const ol = el('ol');
+    steps.forEach((s) => {
+      const li = el('li', String(s.text || s));
+      const bits = [];
+      if (s.minutes) bits.push(s.minutes + ' min');
+      if (s.heat) bits.push(s.heat + ' heat');
+      if (s.temp && s.temp.value) bits.push(s.temp.value + '°' + (s.temp.unit || 'F'));
+      if (bits.length) { li.append(document.createElement('br'), el('span', bits.join(' · '), 'meta')); }
+      ol.append(li);
+    });
+    st.append(ol);
+    out.push(st);
+
+    box.replaceChildren(...out);
+  }
+</script>
+</body>
+</html>
